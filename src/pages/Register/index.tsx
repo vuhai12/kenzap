@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-const Register = () => {
+interface RegisterProps {
+  onClose: () => void;
+}
+
+const Register: React.FC<RegisterProps> = ({ onClose }) => {
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -30,8 +34,16 @@ const Register = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gray-100 px-6 py-20">
-      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-10">
+    <section className="flex items-center justify-center  ">
+      <div className="relative w-full max-h-[90vh] overflow-y-auto max-w-md bg-white shadow-xl rounded-2xl p-10">
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-400 hover:text-black text-xl"
+        >
+          ✕
+        </button>
+
         {/* Title */}
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold mb-2">Create Account</h2>

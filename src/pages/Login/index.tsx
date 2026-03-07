@@ -2,9 +2,10 @@ import React, { useState } from "react";
 
 interface LoginProps {
   onClose: () => void;
+  onOpenRegister: () => void;
 }
 
-const Login = ({ onClose }: LoginProps) => {
+const Login = ({ onClose, onOpenRegister }: LoginProps) => {
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -26,7 +27,10 @@ const Login = ({ onClose }: LoginProps) => {
   };
 
   return (
-    <div className="relative w-full max-w-md bg-white shadow-2xl rounded-2xl p-10">
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className="relative h-[90%] overflow-auto w-full max-w-md bg-white shadow-2xl rounded-2xl p-10"
+    >
       {/* Close button */}
       <button
         onClick={onClose}
@@ -107,7 +111,10 @@ const Login = ({ onClose }: LoginProps) => {
         {/* Register */}
         <p className="text-center text-sm text-gray-500">
           Don't have an account?{" "}
-          <a className="text-green-500 font-semibold hover:underline cursor-pointer">
+          <a
+            onClick={onOpenRegister}
+            className="text-green-500 font-semibold hover:underline cursor-pointer"
+          >
             Register
           </a>
         </p>

@@ -1,10 +1,12 @@
 import Login from "@/pages/Login";
+import Register from "@/pages/Register";
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
+  const [registerOpen, setRegisterOpen] = useState(false);
 
   const location = useLocation();
   const isHome = location.pathname === "/";
@@ -34,13 +36,17 @@ const Header = () => {
           {/* Desktop Menu */}
           <nav className="hidden md:flex gap-8 uppercase text-[14px] font-semibold">
             {menu.map((item) => (
-              <Link
+              <NavLink
                 key={item.name}
                 to={item.path}
-                className="hover:text-[#5cc35c] transition duration-300"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-[#5cc35c] transition duration-300"
+                    : "hover:text-[#5cc35c] transition duration-300"
+                }
               >
                 {item.name}
-              </Link>
+              </NavLink>
             ))}
           </nav>
 
@@ -70,7 +76,7 @@ const Header = () => {
 
               <button
                 onClick={() => setLoginOpen(true)}
-                className="bg-[#5cc35c] px-6 py-2 rounded-lg"
+                className="bg-[#5cc35c] px-6 py-2 rounded-lg cursor-pointer"
               >
                 Get Quote
               </button>
@@ -81,8 +87,25 @@ const Header = () => {
 
       {/* LOGIN MODAL */}
       {loginOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 ">
-          <Login onClose={() => setLoginOpen(false)} />
+        <div
+          onClick={() => setLoginOpen(false)}
+          className="fixed  inset-0 z-[100] flex items-center justify-center bg-black/60 "
+        >
+          <Login
+            onClose={() => setLoginOpen(false)}
+            onOpenRegister={() => {
+              setLoginOpen(false);
+              setRegisterOpen(true);
+            }}
+          />
+        </div>
+      )}
+      {registerOpen && (
+        <div
+          onClick={() => setRegisterOpen(false)}
+          className="fixed  inset-0 z-[100] flex items-center justify-center bg-black/60 "
+        >
+          <Register onClose={() => setRegisterOpen(false)} />
         </div>
       )}
     </>

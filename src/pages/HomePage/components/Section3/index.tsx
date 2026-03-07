@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const features = [
   "Easy drag and drop builder",
@@ -32,6 +33,8 @@ const item = {
   hidden: { opacity: 0, y: 40 },
   show: { opacity: 1, y: 0 },
 };
+
+const MotionLink = motion(Link);
 
 const Section3 = () => {
   return (
@@ -94,13 +97,14 @@ const Section3 = () => {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <motion.button
+          <MotionLink
+            to={"/portfolio"}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-xl font-semibold text-lg transition shadow-md"
           >
             Create Your Website
-          </motion.button>
+          </MotionLink>
         </motion.div>
       </div>
     </section>

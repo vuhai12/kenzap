@@ -1,4 +1,7 @@
+import { motion } from "framer-motion";
+import { useState } from "react";
 import MainLayout from "@/layouts/MainLayout";
+
 import img1 from "@assets/Pricing/logomua1.png";
 import img2 from "@assets/Pricing/logomua2.png";
 import img3 from "@assets/Pricing/logomua3.png";
@@ -59,43 +62,72 @@ const faqs = [
   {
     question: "What happens at the end of free trial?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat",
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.",
   },
   {
     question: "Can I expense my premium membership?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis.",
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
   },
   {
     question: "What is your refund policy",
     answer:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Ut wisi enim ad minim.",
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.",
   },
   {
     question: "How will you bill me?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Ut wisi enim ad minim veniam.",
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
   },
 ];
 
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0 },
+};
+
 const Pricing = () => {
+  const [open, setOpen] = useState<number | null>(null);
+
   return (
     <MainLayout>
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 text-center">
           {/* Title */}
-          <h2 className="text-4xl font-bold mb-6">Pricing</h2>
-          <p className="text-gray-500 max-w-2xl mx-auto mb-16">
-            We gives 100s of templates, unlimited pages & top grade hosting
-            FREE. Upgrade to Premium and get even more.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: -40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl font-bold mb-6">Pricing</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto mb-16">
+              We gives 100s of templates, unlimited pages & top grade hosting
+              FREE. Upgrade to Premium and get even more.
+            </p>
+          </motion.div>
 
           {/* Pricing cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-24">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-24"
+          >
             {plans.map((plan, index) => (
-              <div
+              <motion.div
                 key={index}
-                className={`bg-white rounded-3xl shadow-md p-10 transition hover:-translate-y-2 hover:shadow-2xl ${
+                variants={item}
+                whileHover={{ y: -10, scale: 1.03 }}
+                className={`bg-white rounded-3xl shadow-md p-10 transition ${
                   plan.popular ? "border-2 border-[#3fc380] scale-105" : ""
                 }`}
               >
@@ -116,16 +148,20 @@ const Pricing = () => {
                   ))}
                 </ul>
 
-                <button className="w-full bg-[#3fc380] hover:bg-[#35a76f] text-white py-3 rounded-lg font-semibold transition">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full bg-[#3fc380] hover:bg-[#35a76f] text-white py-3 rounded-lg font-semibold transition"
+                >
                   Get Started
-                </button>
+                </motion.button>
 
                 <p className="text-xs text-gray-400 mt-4">
                   Protected by 256-bit SSL encryption
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Premium Includes */}
           <div>
@@ -133,11 +169,17 @@ const Pricing = () => {
               All Premium Plans Include
             </h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="show"
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10"
+            >
               {includes.map((item, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="flex items-center justify-center gap-4 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition"
+                  whileHover={{ y: -6 }}
+                  className="flex items-center justify-center gap-4 bg-white p-6 rounded-xl shadow-sm hover:shadow-md"
                 >
                   <img
                     src={item.icon}
@@ -145,9 +187,9 @@ const Pricing = () => {
                     className="w-10 h-10 object-contain"
                   />
                   <span className="text-gray-700 font-medium">{item.text}</span>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
 
           {/* FAQ */}
@@ -156,12 +198,26 @@ const Pricing = () => {
               Frequently Asked Questions
             </h3>
 
-            <div className="space-y-10">
+            <div className="space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="border-b pb-8">
-                  <h4 className="text-lg font-semibold mb-3">{faq.question}</h4>
-                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                </div>
+                <motion.div
+                  key={index}
+                  layout
+                  className="border-b pb-6 cursor-pointer"
+                  onClick={() => setOpen(open === index ? null : index)}
+                >
+                  <h4 className="text-lg font-semibold mb-2">{faq.question}</h4>
+
+                  {open === index && (
+                    <motion.p
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      className="text-gray-600 leading-relaxed"
+                    >
+                      {faq.answer}
+                    </motion.p>
+                  )}
+                </motion.div>
               ))}
             </div>
           </div>
