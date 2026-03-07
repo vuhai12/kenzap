@@ -107,7 +107,7 @@ const Login = ({ onClose }: LoginProps) => {
         {/* Register */}
         <p className="text-center text-sm text-gray-500">
           Don't have an account?{" "}
-          <a className="text-green-500 font-semibold hover:underline">
+          <a className="text-green-500 font-semibold hover:underline cursor-pointer">
             Register
           </a>
         </p>

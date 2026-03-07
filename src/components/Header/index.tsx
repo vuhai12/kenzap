@@ -19,13 +19,15 @@ const Header = () => {
   return (
     <>
       <header
-        className={`w-full text-white absolute z-50 transition ${
-          !isHome ? "bg-purple-600/90 backdrop-blur-md" : ""
+        className={`w-full z-50 transition-all duration-300 ${
+          isHome
+            ? "absolute text-white"
+            : "sticky top-0 bg-[#0f172a]/90 backdrop-blur-md shadow-md text-white"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-[70px] flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="text-[30px] font-bold">
+          <Link to="/" className="text-[30px] font-bold tracking-wide">
             KENZAP
           </Link>
 
@@ -35,7 +37,7 @@ const Header = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className="hover:text-[#5cc35c] transition"
+                className="hover:text-[#5cc35c] transition duration-300"
               >
                 {item.name}
               </Link>
@@ -45,7 +47,7 @@ const Header = () => {
           {/* Get Quote Button */}
           <button
             onClick={() => setLoginOpen(true)}
-            className="hidden md:block border border-white px-5 py-2 rounded font-semibold transition hover:bg-white hover:text-purple-700"
+            className="hidden md:block border border-white px-5 py-2 rounded-lg font-semibold transition hover:bg-white hover:text-[#0f172a]"
           >
             Get Quote
           </button>
@@ -58,7 +60,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {open && (
-          <div className="md:hidden bg-[#013c74] border-t border-white/20">
+          <div className="md:hidden bg-[#0f172a] border-t border-white/20">
             <div className="flex flex-col items-center gap-6 py-6 uppercase text-[14px] font-semibold">
               {menu.map((item) => (
                 <Link key={item.name} to={item.path}>
@@ -68,7 +70,7 @@ const Header = () => {
 
               <button
                 onClick={() => setLoginOpen(true)}
-                className="bg-[#5cc35c] px-6 py-2 rounded"
+                className="bg-[#5cc35c] px-6 py-2 rounded-lg"
               >
                 Get Quote
               </button>
@@ -79,7 +81,7 @@ const Header = () => {
 
       {/* LOGIN MODAL */}
       {loginOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-none">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 ">
           <Login onClose={() => setLoginOpen(false)} />
         </div>
       )}

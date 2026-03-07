@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const testimonials = [
   {
@@ -35,30 +36,57 @@ const Section5 = () => {
     <section className="py-24 bg-gray-50">
       <div className="max-w-4xl mx-auto px-6 text-center">
         {/* Title */}
-        <h2 className="text-4xl font-bold text-gray-900 mb-10">
+        <motion.h2
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl font-bold text-gray-900 mb-10"
+        >
           100% Customer Satisfaction!
-        </h2>
+        </motion.h2>
 
-        {/* Quote */}
-        <p className="text-lg text-gray-600 italic leading-relaxed mb-10">
-          “{item.text}”
-        </p>
+        {/* Quote animation */}
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={index}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.6 }}
+            className="text-lg text-gray-600 italic leading-relaxed mb-10"
+          >
+            “{item.text}”
+          </motion.p>
+        </AnimatePresence>
 
         {/* User */}
-        <div className="flex flex-col items-center gap-2">
-          <p className="font-semibold text-gray-900">{item.name}</p>
-          <p className="text-gray-500 text-sm">{item.role}</p>
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={item.name}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-center gap-2"
+          >
+            <p className="font-semibold text-gray-900">{item.name}</p>
+            <p className="text-gray-500 text-sm">{item.role}</p>
+          </motion.div>
+        </AnimatePresence>
 
         {/* Dots */}
         <div className="flex justify-center gap-3 mt-10">
           {testimonials.map((_, i) => (
-            <button
+            <motion.button
               key={i}
               onClick={() => setIndex(i)}
-              className={`w-3 h-3 rounded-full ${
-                index === i ? "bg-green-500" : "bg-gray-300"
-              }`}
+              whileTap={{ scale: 0.8 }}
+              animate={{
+                scale: index === i ? 1.3 : 1,
+                backgroundColor: index === i ? "#22c55e" : "#d1d5db",
+              }}
+              transition={{ duration: 0.3 }}
+              className="w-3 h-3 rounded-full"
             />
           ))}
         </div>

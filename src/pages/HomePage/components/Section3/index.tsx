@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const features = [
   "Easy drag and drop builder",
@@ -15,12 +16,35 @@ const features = [
   "24/7 customer support",
 ];
 
+// container animation
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+// item animation
+const item = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0 },
+};
+
 const Section3 = () => {
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Title */}
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             Everything You Need in One Place
           </h2>
@@ -29,34 +53,55 @@ const Section3 = () => {
             Our platform provides all the tools you need to build, launch and
             manage your website effortlessly.
           </p>
-        </div>
+        </motion.div>
 
         {/* Features Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((item, index) => (
-            <div
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {features.map((itemText, index) => (
+            <motion.div
               key={index}
-              className="flex items-start gap-4 p-6 border border-gray-200 rounded-xl hover:shadow-lg hover:-translate-y-1 transition duration-300"
+              variants={item}
+              whileHover={{ y: -6, scale: 1.03 }}
+              className="flex items-start gap-4 p-6 border border-gray-200 rounded-xl hover:shadow-lg transition"
             >
               {/* Icon */}
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-green-100 text-green-600">
+              <motion.div
+                whileHover={{ scale: 1.2 }}
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-green-100 text-green-600 font-bold"
+              >
                 ✓
-              </div>
+              </motion.div>
 
               {/* Text */}
               <p className="text-gray-700 font-medium leading-relaxed">
-                {item}
+                {itemText}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* CTA */}
-        <div className="text-center mt-16">
-          <button className="bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-xl font-semibold text-lg transition shadow-md">
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="text-center mt-16"
+        >
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-xl font-semibold text-lg transition shadow-md"
+          >
             Create Your Website
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const Section6 = () => {
   const [form, setForm] = useState({
@@ -23,20 +24,43 @@ const Section6 = () => {
     alert("Message sent!");
   };
 
+  const container = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
+
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Title */}
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: -40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
           <p className="text-gray-500">
             Have questions? We'd love to hear from you.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-16 items-center">
           {/* Left content */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+          >
             <h3 className="text-2xl font-semibold mb-6 text-gray-900">
               Let's talk about your project
             </h3>
@@ -52,15 +76,19 @@ const Section6 = () => {
               <p>📧 contact@email.com</p>
               <p>📞 +84 123 456 789</p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Form */}
-          <form
+          <motion.form
             onSubmit={handleSubmit}
+            variants={container}
+            initial="hidden"
+            whileInView="show"
             className="bg-gray-50 p-8 rounded-xl shadow-sm"
           >
             <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <input
+              <motion.input
+                variants={item}
                 type="text"
                 name="name"
                 placeholder="Your Name"
@@ -70,7 +98,8 @@ const Section6 = () => {
                 required
               />
 
-              <input
+              <motion.input
+                variants={item}
                 type="email"
                 name="email"
                 placeholder="Email Address"
@@ -81,7 +110,8 @@ const Section6 = () => {
               />
             </div>
 
-            <input
+            <motion.input
+              variants={item}
               type="text"
               name="subject"
               placeholder="Subject"
@@ -91,22 +121,27 @@ const Section6 = () => {
               required
             />
 
-            <textarea
+            <motion.textarea
+              variants={item}
               name="message"
               placeholder="Your Message"
               value={form.message}
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-lg px-4 py-3 mb-6 focus:outline-none focus:border-green-500"
+              rows={4}
               required
-            ></textarea>
+            />
 
-            <button
+            <motion.button
+              variants={item}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               type="submit"
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-lg font-semibold transition"
             >
               Send Message
-            </button>
-          </form>
+            </motion.button>
+          </motion.form>
         </div>
       </div>
     </section>
