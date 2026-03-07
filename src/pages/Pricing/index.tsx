@@ -101,7 +101,7 @@ const Pricing = () => {
   return (
     <MainLayout>
       <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 text-center">
+        <div className="container text-center">
           {/* Title */}
           <motion.div
             initial={{ opacity: 0, y: -40 }}

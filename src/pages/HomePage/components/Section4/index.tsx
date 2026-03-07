@@ -64,7 +64,7 @@ const Dot = ({
 const Section4 = () => {
   return (
     <section className="py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-6 text-center">
+      <div className="container text-center">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}

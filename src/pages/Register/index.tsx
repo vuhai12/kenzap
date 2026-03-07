@@ -33,7 +33,7 @@ const Register: React.FC<RegisterProps> = ({ onClose }) => {
 
   return (
     <section
-      className="flex items-center justify-center"
+      className="flex items-center justify-center mx-[20px]"
       onClick={(e) => e.stopPropagation()}
     >
       <div className="relative w-full max-h-[90vh] overflow-y-auto max-w-md bg-white shadow-xl rounded-2xl p-10">

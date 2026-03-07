@@ -34,7 +34,7 @@ const Section5 = () => {
 
   return (
     <section className="py-24 bg-gray-50">
-      <div className="max-w-4xl mx-auto px-6 text-center">
+      <div className="container text-center">
         {/* Title */}
         <motion.h2
           initial={{ opacity: 0, y: -30 }}

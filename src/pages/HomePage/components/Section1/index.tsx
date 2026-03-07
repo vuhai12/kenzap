@@ -35,7 +35,7 @@ const item = {
 const Section1 = () => {
   return (
     <section className="bg-white py-20">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="container">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}

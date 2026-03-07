@@ -93,7 +93,7 @@ const AboutUs = () => {
   return (
     <MainLayout>
       <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="container">
           {/* About */}
           <motion.div
             initial={{ opacity: 0, y: -40 }}

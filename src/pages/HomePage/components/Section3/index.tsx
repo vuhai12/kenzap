@@ -38,7 +38,7 @@ const MotionLink = motion(Link);
 const Section3 = () => {
   return (
     <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="container">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}

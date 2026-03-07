@@ -29,7 +29,7 @@ const Login = ({ onClose, onOpenRegister }: LoginProps) => {
   return (
     <div
       onClick={(e) => e.stopPropagation()}
-      className="relative max-h-[90vh] overflow-auto w-full max-w-md bg-white shadow-2xl rounded-2xl p-10"
+      className="relative mx-[20px] max-h-[90vh] overflow-auto w-full max-w-md bg-white shadow-2xl rounded-2xl p-10"
     >
       {/* Close button */}
       <button

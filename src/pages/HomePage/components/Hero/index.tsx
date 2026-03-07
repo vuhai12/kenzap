@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   const MotionLink = motion(Link);
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden text-white">
+    <section className="relative min-h-screen py-[100px] flex items-center overflow-hidden text-white">
       {/* Background */}
       <img
         src={imageHero}
@@ -19,7 +19,8 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/30 to-transparent"></div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-28 flex flex-col lg:flex-row items-center gap-16">
+
+      <div className="relative z-10 py-28 container  flex flex-col lg:flex-row items-center gap-16">
         {/* LEFT TEXT */}
         <motion.div
           className="flex-1 text-center lg:text-left"

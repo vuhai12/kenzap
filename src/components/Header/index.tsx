@@ -27,7 +27,7 @@ const Header = () => {
             : "sticky top-0 bg-[#0f172a]/90 backdrop-blur-md shadow-md text-white"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-[70px] flex items-center justify-between">
+        <div className="container h-[70px] flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="text-[30px] font-bold tracking-wide">
             KENZAP
