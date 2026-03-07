@@ -97,12 +97,12 @@ const Section4 = () => {
           />
 
           {/* Dots */}
-          <Dot top="42%" left="34%" delay="0s" />
-          <Dot top="50%" left="55%" delay="0.6s" />
+          <Dot top="25%" left="34%" delay="0s" />
+          <Dot top="30%" left="55%" delay="0.6s" />
           <Dot top="34%" left="72%" delay="1s" />
           <Dot top="60%" left="32%" delay="1.4s" />
           <Dot top="24%" left="62%" delay="1.8s" />
-          <Dot top="64%" left="82%" delay="2.2s" />
+          <Dot top="68%" left="78%" delay="2.2s" />
         </motion.div>
 
         {/* Counters */}

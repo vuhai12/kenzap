@@ -29,12 +29,13 @@ const Register: React.FC<RegisterProps> = ({ onClose }) => {
       alert("Passwords do not match");
       return;
     }
-
-    console.log("Register data:", form);
   };
 
   return (
-    <section className="flex items-center justify-center  ">
+    <section
+      className="flex items-center justify-center"
+      onClick={(e) => e.stopPropagation()}
+    >
       <div className="relative w-full max-h-[90vh] overflow-y-auto max-w-md bg-white shadow-xl rounded-2xl p-10">
         {/* Close button */}
         <button
@@ -142,10 +143,7 @@ const Register: React.FC<RegisterProps> = ({ onClose }) => {
           {/* Login link */}
           <p className="text-center text-sm text-gray-500">
             Already have an account?{" "}
-            <a
-              href="/login"
-              className="text-green-500 font-semibold hover:underline"
-            >
+            <a className="text-green-500 font-semibold hover:underline">
               Login
             </a>
           </p>

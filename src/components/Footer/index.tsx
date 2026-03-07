@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-4 sm:grid-cols-2 gap-10">
         {/* Logo / About */}
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">DevPlatform</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">KENZAP</h2>
           <p className="text-sm leading-6">
             Build modern, fast and scalable websites with our powerful tools.
             Designed for developers and startups who want to launch products
@@ -63,7 +63,7 @@ const Footer = () => {
 
       {/* Bottom */}
       <div className="border-t border-gray-300 py-6 text-center text-sm text-gray-600">
-        © 2026 DevPlatform. All rights reserved.
+        © 2026 KENZAP. All rights reserved.
       </div>
     </footer>
   );

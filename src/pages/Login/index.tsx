@@ -29,12 +29,12 @@ const Login = ({ onClose, onOpenRegister }: LoginProps) => {
   return (
     <div
       onClick={(e) => e.stopPropagation()}
-      className="relative h-[90%] overflow-auto w-full max-w-md bg-white shadow-2xl rounded-2xl p-10"
+      className="relative max-h-[90vh] overflow-auto w-full max-w-md bg-white shadow-2xl rounded-2xl p-10"
     >
       {/* Close button */}
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 text-gray-400 hover:text-black text-xl"
+        className="absolute top-4 right-4 text-gray-400 hover:text-black text-xl cursor-pointer"
       >
         ✕
       </button>
@@ -103,7 +103,7 @@ const Login = ({ onClose, onOpenRegister }: LoginProps) => {
         {/* Button */}
         <button
           type="submit"
-          className="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-semibold transition duration-300"
+          className="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-semibold transition duration-300 cursor-pointer"
         >
           Sign In
         </button>

@@ -53,13 +53,16 @@ const Header = () => {
           {/* Get Quote Button */}
           <button
             onClick={() => setLoginOpen(true)}
-            className="hidden md:block border border-white px-5 py-2 rounded-lg font-semibold transition hover:bg-white hover:text-[#0f172a]"
+            className="hidden md:block border border-white px-5 py-2 rounded-lg font-semibold transition hover:bg-white hover:text-[#0f172a] cursor-pointer"
           >
             Get Quote
           </button>
 
           {/* Mobile menu button */}
-          <button className="md:hidden text-3xl" onClick={() => setOpen(!open)}>
+          <button
+            className="md:hidden text-3xl cursor-pointer"
+            onClick={() => setOpen(!open)}
+          >
             ☰
           </button>
         </div>
