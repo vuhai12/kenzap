@@ -1,20 +1,25 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import Pricing from "./pages/Pricing";
-import AboutUs from "./pages/AboutUs";
-import Portfolio from "./pages/Portfolio";
-import ScrollToTop from "./components/ScrollToTop";
+import ScrollHandler from "@components/ScrollHandler";
+import { Suspense, lazy } from "react";
+import LoadingSpinner from "@components/LoadingSpinner";
+
+const HomePage = lazy(() => import("@pages/HomePage"));
+const Pricing = lazy(() => import("@pages/Pricing"));
+const AboutUs = lazy(() => import("@pages/AboutUs"));
+const Portfolio = lazy(() => import("@pages/Portfolio"));
 
 function App() {
   return (
     <>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/pricing" element={<Pricing />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-      </Routes>
+      <ScrollHandler />
+      <Suspense fallback={<LoadingSpinner />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+        </Routes>
+      </Suspense>
     </>
   );
 }
