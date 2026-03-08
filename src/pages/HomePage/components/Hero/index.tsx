@@ -1,5 +1,3 @@
-import imageHero from "@assets/Hero/banner.png";
-import image1 from "@assets/Hero/home1-hero-mobile-img.png";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -10,7 +8,7 @@ const Hero = () => {
     <section className="relative min-h-screen py-[100px] flex items-center overflow-hidden text-white">
       {/* Background */}
       <img
-        src={imageHero}
+        src={"/hero/banner.png"}
         alt="hero background"
         className="absolute inset-0 w-full h-full object-cover"
       />
@@ -83,7 +81,7 @@ const Hero = () => {
         >
           {/* Image */}
           <motion.img
-            src={image1}
+            src={"/hero/home1-hero-mobile-img.png"}
             alt="ui design"
             className="w-[90%] max-w-md lg:max-w-lg drop-shadow-2xl"
             animate={{ y: [0, -15, 0] }}
